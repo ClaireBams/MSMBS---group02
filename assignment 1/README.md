@@ -10,7 +10,7 @@
 - `requirements.txt` — Python dependencies (numpy, matplotlib, pandas, scipy, seaborn)
 - `README.md` — this file
 
-**How to run**: [e.g. `pip install -r requirements.txt` then open and run `analysis.ipynb` top to bottom]
+**How to run**: `pip install -r requirements.txt` then open and run `analysis.ipynb` top to bottom
 
 ---
 
