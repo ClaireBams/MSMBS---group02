@@ -18,6 +18,9 @@
 Then open `metabolic_modelling.ipynb` and run the notebook from top to bottom.
 
 ## 2. Task 1
+
+The maximal reaction activities were visualized on the E. coli core ESCHER map. The values represent max reaction capacities rather than actual FBA fluxes, so they do not have to be equal along a pathway. Grey reactions indicate either zero estimated activity (0.00) or missing activity data (nd).
+
 ---
 
 ## 3. Task 2 – Enzyme activity-constrained model
