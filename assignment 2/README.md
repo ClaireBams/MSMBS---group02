@@ -42,7 +42,11 @@ The activity dataset contains values for 65 reactions, while the complete E. col
 ---
 
 ## 5. Task 4
-
----
+- Prepared a plot showing the maximal biomass production rate as a function of the glucose exchange reaction flux bound in the interval [1, 15] mmol/gDW/h with increments of 0.1.
+- Observed that the growth rate does not increase indefinitely. The curve eventually plateaus because the internal enzymes reach their maximum capacity limits, preventing the cell from processing additional glucose any faster.
+- Inspected the exchange reaction fluxes and identified that in the second segment, the cell shifts to overflow metabolism, activating the acetate exchange reaction (`EX_ac_e`) to secrete excess carbon.
 
 ## 6. Conclusions
+Adding enzyme activity limits to the model shows a much more realistic behavior of the cell. Cell growth depends mainly on two factors: the amount of glucose available outside and the capacity of the enzymes inside. 
+As we increased the glucose supply, the main respiratory pathways of the cell reached their limit. To process the excess carbon, the cell switched to a fermentation metabolism and started secreting acetate (`EX_ac_e`). 
+Finally, the system reached a maximum point where more glucose no longer increases the growth rate. This shows that the internal enzymes are working at their maximum capacity.
