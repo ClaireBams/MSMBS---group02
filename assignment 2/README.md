@@ -37,8 +37,11 @@ The activity dataset contains values for 65 reactions, while the complete E. col
 
 ---
 
-## 4. Task 3 
+### 4. Task 3 – Biomass optimization under substrate and enzyme constraints
 
+- FBA on the enzyme-constrained model from Task 2 (glucose exchange unconstrained) gave a maximal biomass production rate of **0.8733 mmol/gDW/h**.
+- The glucose exchange reaction EX_glc__D_e was then limited to 5 mmol/gDW/h, meaning how much glucose the cell can take in, not how fast its enzymes can work.
+- Under this constraint, the maximal biomass production rate dropped to **0.4156 mmol/gDW/h**, This shows that once glucose uptake is limited, it becomes the binding constraint on growth, more restrictive than the enzyme-activity bounds alone, growth is now limited by how much glucose the cell can get, not by how fast its enzymes can work.
 ---
 
 ## 5. Task 4
