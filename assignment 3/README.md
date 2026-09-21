@@ -43,9 +43,26 @@ Number/type of attractors, basin sizes, and percentage of states leading to canc
 
 ## 5. Mutation C – MDM2 overexpression
 
+MDM2 is always ON in this mutation.
+
 ### Scenario analysis
 
+| Scenario | Growth | Death | p53 |
+|---|---|---|---|
+| Healthy Cell | 1 | 0 | 0 |
+| Stressed Cell | 1 | 0 | 0 |
+| Oncogene Hijacked Cell | 1 | 0 | 0 |
+
+All three cells grow. The Stressed Cell does not die anymore, because MDM2 keeps p53 OFF.
+
 ### Attractor analysis
+
+| Attractor | Classification | Basin size | Basin percentage |
+|---|---|---|---|
+| 1 | Healthy growth | 128 | 50.0% |
+| 2 | Cancer-like growth | 128 | 50.0% |
+
+The Cell death attractor is gone. 50.0% of the states (128 out of 256) end in cancer-like growth, compared with 3.1% in the normal network.
 
 ---
 
