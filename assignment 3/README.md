@@ -21,25 +21,24 @@ The normal network was used as the baseline. The healthy and oncogene-hijacked s
 
 ## 3. Mutation A – p53 knockout
 
-Briefly describe the mutation.
+p53 is off in the case of this mutation.
 
 ### Scenario analysis
-
-Results for Healthy, Stressed, and Oncogene Hijacked scenarios.
+For the Healthy Cell, Stressed Cell, and Oncogene Hijacked Cell scenarios, the final state is always Growth = 1, Death = 0, and p53 = 0. All three cells grow. The Stressed Cell does not die anymore because p53 is permanently disabled and cannot trigger cell death.
 
 ### Attractor analysis
+There are 2 attractors in total. Healthy growth accounts for 128 states (50.0%), and cancer-like growth accounts for 50% as well. The Cell death attractor is not included. 50.0% of the initial states end in cancer-like growth, compared with 3.1% in the normal network.
 
-Number/type of attractors, basin sizes, and percentage of states leading to cancer-like states.
-
----
 
 ## 4. Mutation B – MYC amplification
 
+MYC is on in mutation B.
+
 ### Scenario analysis
+For the Healthy Cell, Stressed Cell, and Oncogene Hijacked Cell scenarios, the final state is always Growth = 1, Death = 0, and p53 = 0. All three cells grow. The Stressed Cell does not die anymore because constant MYC activity activates MDM2, which in turn keeps p53 OFF.
 
 ### Attractor analysis
-
----
+There are 2 attractors in total. Healthy growth accounts for 128 states (50.0%), and Cancer-like growth accounts for the other half. 50.0% of the initial states end in cancer-like growth, in contrast with 3.1% in the normal network.
 
 ## 5. Mutation C – MDM2 overexpression
 
