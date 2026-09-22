@@ -65,13 +65,29 @@ The Cell death attractor is gone. 50.0% of the states (128 out of 256) end in ca
 
 ---
 
-## 6. Mutation D – [name of your mutation]
+## 6. Mutation D – p21 (CDKN1A) knockout
 
-Explain why this mutation was chosen.
-
+We picked p21 because it is the cell's normal "brake". In real cancer cells, losing p21 is known to remove this brake.(https://pmc.ncbi.nlm.nih.gov/articles/PMC2722839/)
 ### Scenario analysis
 
+| Scenario | Growth | Death | p53 |
+|---|---|---|---|
+| Healthy Cell | 1 | 0 | 0 |
+| Stressed Cell | 0 | 1 | 0 |
+| Oncogene Hijacked Cell | 1 | 0 | 0 |
+
+The Stressed Cell still dies here, but it never fully settles, it keeps oscillating, so this row only shows its state after 15 steps.
+
 ### Attractor analysis
+
+| Attractor | Classification | Basin size | Basin percentage |
+|---|---|---|---|
+| 1 | Healthy growth | 128 | 50.0% |
+| 2 | Cell death | 24 | 9.4% |
+| 3 | Cancer-like growth | 8 | 3.1% |
+
+Cell death drops a lot compared to the normal network (46.9% -> 9.4%). This drop (120 to 24 states, a difference of 96) matches almost exactly the 96 states (37.5%) that no longer reach a steady state, which suggests these are largely the same states: cells that used to die now get stuck oscillating instead. Cancer-like growth stays the same, at 3.1%.
+
 
 ---
 
