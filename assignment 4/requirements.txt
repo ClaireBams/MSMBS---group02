@@ -1,0 +1,24 @@
+# Versions from the working assignment environment; Python >=3.12 (tested with 3.13.15)
+numpy==2.5.3
+scipy==1.18.1
+pandas==2.3.3
+
+# RSA and dimensionality reduction (t-SNE / PCA)
+rsatoolbox==0.3.2
+scikit-learn==1.9.1
+
+# Supplied models and audio preprocessing
+torch==2.14.0
+torchaudio==2.11.0
+soundfile==0.14.0
+
+# Brain data and precomputed YAMNet embeddings
+h5py==3.16.0
+
+# Figures
+matplotlib==3.11.2
+seaborn==0.13.2
+
+# Running analysis notebooks
+jupyterlab==4.6.4
+ipykernel==7.3.0
