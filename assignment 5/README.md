@@ -68,19 +68,44 @@ Pathogen cells are treated differently because the wall weakening rule does not 
 
 ### Diffusion Coefficient
 
-[Explain how the diffusion coefficient is defined in the model.]
+Diffusion is the passive movement of auxin in both directions, net flow from high to low concentration. The diffusion coefficient decides how fast this happens, and it depends on how stiff that wall is
+In the CelltoCellTransport, the diffusion coefficient is defined by: diffusionCoef = 0.00001 / stiffness
+This means a stiff wall gives a small diffusion coefficient, so the chemical moves slowly. A soft wall gives a larger diffusion coefficient, so the chemical moves faster. In other words, the softer the wall, the faster the chemical spreads.
 
-### Feedback Loop
+#### Feedback Loop
 
-[Explain the sequence: chemical → wall stiffness → diffusion → chemical spreading]
+1. The pathogen keeps making the chemical.
+2. The chemical moves into the neighbouring cells.
+3. In those cells, the chemical makes the walls softer (in `CellHouseKeeping`, the stiffness drops from 3 to `3 - chemical level`).
+4. Softer walls let the chemical pass through faster (the diffusion coefficient is `0.00001 / stiffness`, so a lower stiffness gives a higher value).
+5. Because the chemical now moves faster, it reaches the next cells sooner. Their walls also become softer, and the whole thing repeats.
 
 ### Feedback Diagram
 
-[Insert sketch/diagram here.]
+```
+        More chemical in a cell
+                 │
+                 │  makes the walls softer
+                 ▼
+          Softer cell walls
+                 │
+                 │  lets the chemical pass faster
+                 ▼
+          Faster diffusion
+                 │
+                 │  spreads the chemical to neighbours
+                 ▼
+       More chemical in neighbours
+                 │
+                 └──────► back to the top
+```
 
 ### Type of Feedback
 
-[State whether this is positive or negative feedback and explain why.]
+Each round makes the next one stronger, so it's positive feedback, and that's why the infection keeps spreading.
+
+The feedback does have limits. The walls can never become softer than a stiffness of 1.8, so the chemical can only speed up to a certain point. The cells also slowly break down the chemical, so far away from the pathogen it does not build up enough to soften the walls.
+
 
 ---
 
@@ -114,7 +139,9 @@ Two simulations were performed using different values of `rel_cell_div_threshold
 
 ## 5. Cell Neighbours
 
-[Explain the fundamental difference between cell neighbours in this model and the models used previously in the course.]
+In the previous models, all cells were plant cells, and their neighbours were other plant cells from the same tissue.
+
+In the infection model, cells can have a neighbour that is not part of the plant: the pathogen. The pathogen grows and divides inside the tissue (`EnlargeTargetArea` and `Divide` for cell type 2), so the plant cells around it keep getting new pathogen neighbours, while they are pushed aside and squeezed. The plant cells do not turn into pathogen cells; the pathogen spreads by growing into the tissue. Being next to the pathogen also changes the plant cell, because the chemical it receives from its neighbours softens its walls.
 
 ---
 
