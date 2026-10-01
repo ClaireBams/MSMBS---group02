@@ -56,12 +56,11 @@ Screenshots were taken at the initial state and every 30 minutes.
 
 ### Normal Cells
 
-[Explain in your own words how wall stiffness changes as a function of
-chemical level.]
+For normal cells, the wall stiffness decreases as the chemical level increases. The code first takes the chemical level and scales it by dividing it by 0.5. If this scaled value is above 0.1, the cell wall starts to weaken. The normal stiffness value is 3, and the scaled chemical level is subtracted from this value, so a higher chemical level means a lower wall stiffness. The chemical effect is limited to a maximum value of 1.2, which means the stiffness cannot decrease below 1.8. So overall, the more chemical reaches a normal cell, the softer its wall becomes.
 
 ### Pathogen Cells
 
-[Explain what the pathogen does differently.]
+Pathogen cells are treated differently because the wall weakening rule does not apply to them. The code only reduces stiffness when the cell is not a pathogen (CellType != 2). Because of this, pathogen cells keep the default stiffness value of 3 even when the chemical level is high. So the chemical mainly weakens the surrounding plant cells, while the pathogen itself keeps its wall stiffness unchanged.   Infection
 
 ---
 
@@ -73,10 +72,7 @@ chemical level.]
 
 ### Feedback Loop
 
-[Explain the sequence:
-
-chemical → wall stiffness → diffusion → chemical spreading
-]
+[Explain the sequence: chemical → wall stiffness → diffusion → chemical spreading]
 
 ### Feedback Diagram
 
@@ -90,8 +86,7 @@ chemical → wall stiffness → diffusion → chemical spreading
 
 ## 4. Effect of `rel_cell_div_threshold`
 
-Two simulations were performed using different values of
-`rel_cell_div_threshold`.
+Two simulations were performed using different values of `rel_cell_div_threshold`.
 
 ### Run 1 – Lower Threshold
 
@@ -113,31 +108,45 @@ Two simulations were performed using different values of
 
 ### Comparison
 
-[Explain how changing the threshold affected the speed of pathogen
-population growth.]
+[Explain how changing the threshold affected the speed of pathogen population growth.]
 
 ---
 
 ## 5. Cell Neighbours
 
-[Explain the fundamental difference between cell neighbours in this
-model and the models used previously in the course.]
+[Explain the fundamental difference between cell neighbours in this model and the models used previously in the course.]
 
 ---
 
 ## 6. Proposed Plant Defense Mechanism
 
-The proposed defense causes cells with a chemical level above a certain
-threshold to stiffen their walls.
-
 ### Pseudocode
 
-```text
-CellHouseKeeping:
+The defense would be added in the same part of `CellHouseKeeping` where the chemical level is checked and the wall stiffness is changed. 
 
-    [existing section ...]
 
-    if [chemical condition]:
-        [change wall stiffness]
+```
+calculate chemical level
+set normal wall stiffness
 
-    [remaining section ...]
+if cell is not a pathogen:
+    if chemical > defense threshold:
+        increase wall stiffness
+    else if chemical > weakening threshold:
+        decrease wall stiffness
+    else:
+        keep normal wall stiffness
+
+apply stiffness to the wall
+```
+
+So basically, the new condition would be added before the original weakening rule. If the chemical level becomes high enough to activate the defense, the cell would stiffen its wall. If the defense threshold is not reached, the cell would continue following the original rule, where increasing chemical makes the wall weaker.
+
+### Feedback
+This defense would add negative feedback. In the original model, more chemical makes the wall less stiff, and a lower stiffness increases the diffusion coefficient, which helps the chemical spread further. With the defense, once the chemical level becomes high enough, the cell reacts in the opposite way and makes its wall stiffer. Since the diffusion coefficient decreases when stiffness increases, this would slow down the spread of the chemical to neighbouring cells. 
+
+more chemical
+→ defense is activated
+→ wall becomes stiffer
+→ diffusion decreases
+→ chemical spreads more slowly
