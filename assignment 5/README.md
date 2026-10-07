@@ -14,28 +14,33 @@ Screenshots were taken at the initial state and every 30 minutes.
 
 #### 0 minutes
 ![Initial state](images/initialstate.png)
+
 Observation: The healthy tissue starts out as a neat, organized grid of rectangular cells. The pathogen is just a small spot on the left edge.
 
 #### 30 minutes
 ![30 minutes](images/30mins.png)
+
 Observation: The tissue deforms quickly. The cells lose their rigid shape and become swollen and round, causing the whole block of tissue to bulge outward.
 
 #### 60 minutes
 ![60 minutes](images/60mins.png)
+
 Observation: The deformation increases. The tissue reaches a new, stable state that looks almost the same as it did at 30 minutes.
 
 #### 90 minutes
 ![90 minutes](images/90mins.png)
+
 Observation: No big changes. The tissue stays in this degraded state.
 
 #### 120 minutes
 ![120 minutes](images/120mins.png)
+
 Observation: The simulation ends with the tissue  disorganized and swollen.
 
 ### 1.2 Overall Observations
 
-The infection starts at the small entry point on the left and spreads by releasing chemicals that attack and weaken the plant's cell walls. In the model, this spread works by lowering the stiffness parameter of the cell walls as the pathogen moves through the grid. 
-The tissue doesn't keep its neat shape like in a healthy plant, because there would be a perfect balance between the pressure pushing outward from inside the cell and the walls that hold everything in place. When the pathogen's chemicals break down that wall stiffness, the cells can’t resist the internal pressure anymore. Because the turgor pressure keeps pushing against walls that are now too weak to push back, the cells rapidly deform.  They swell into rounded, irregular shapes, making the whole outer edge of the tissue to bulge. This structural collapse goes through the entire grid in the first 30 minutes, leaving the tissue disorganized for the rest of the run. 
+The infection starts from the small pathogen region on the left side of the tissue and spreads outwards from there by releasing chemicals that attack and weaken the plant's cell walls. In the model, this spread works by lowering the stiffness parameter of the cell walls as the pathogen moves through the grid. 
+The tissue doesn't keep its neat shape like in a healthy plant, because there would be a perfect balance between the pressure pushing outward from inside the cell and the walls that hold everything in place. When the pathogen's chemicals break down that wall stiffness, the cells can’t resist the internal pressure anymore. Because the turgor pressure keeps pushing against walls that are now too weak to push back, the cells rapidly deform.  They swell into rounded, irregular shapes, making the whole outer edge of the tissue bulge. This structural collapse goes through the entire grid in the first 30 minutes, leaving the tissue disorganized for the rest of the run. 
 
 
 ## 2. Cell Wall Stiffness
@@ -46,7 +51,7 @@ For normal cells, the wall stiffness decreases as the chemical level increases. 
 
 ### Pathogen Cells
 
-Pathogen cells are treated differently because the wall weakening rule does not apply to them. The code only reduces stiffness when the cell is not a pathogen (CellType != 2). Because of this, pathogen cells keep the default stiffness value of 3 even when the chemical level is high. So the chemical mainly weakens the surrounding plant cells, while the pathogen itself keeps its wall stiffness unchanged.   Infection
+Pathogen cells are treated differently because the wall weakening rule does not apply to them. The code only reduces stiffness when the cell is not a pathogen (CellType != 2). Because of this, pathogen cells keep the default stiffness value of 3 even when the chemical level is high. So the chemical mainly weakens the surrounding plant cells, while the pathogen itself keeps its wall stiffness unchanged. 
 
 ---
 
@@ -54,8 +59,7 @@ Pathogen cells are treated differently because the wall weakening rule does not 
 
 ### Diffusion Coefficient
 
-Diffusion is the passive movement of auxin in both directions, net flow from high to low concentration. The diffusion coefficient decides how fast this happens, and it depends on how stiff that wall is
-In the CelltoCellTransport, the diffusion coefficient is defined by: diffusionCoef = 0.00001 / stiffness
+Diffusion is the passive movement of chemical between neighbouring cells, with the net flow going from high to low concentration. The diffusion coefficient decides how fast this happens, and it depends on how stiff that wall is in the CelltoCellTransport, the diffusion coefficient is defined by: diffusionCoef = 0.00001 / stiffness
 This means a stiff wall gives a small diffusion coefficient, so the chemical moves slowly. A soft wall gives a larger diffusion coefficient, so the chemical moves faster. In other words, the softer the wall, the faster the chemical spreads.
 
 #### Feedback Loop
@@ -102,7 +106,7 @@ Two simulations were performed using different values of `rel_cell_div_threshold
 default value: 2
 
 ### Run 1 – Lower Threshold
-![Lower threshold](images/lowerthrshld.png)
+![Lower threshold](images/lowerthrsld.png)
 Value: 1.2
 
 Observation:
