@@ -13,44 +13,30 @@ Screenshots were taken at the initial state and every 30 minutes.
 ### 1.1 Simulation Progression
 
 #### 0 minutes
-![Initial state](images/infection_0min.png)
-
-**Observation:**  
-[Describe the initial tissue and infected region.]
+![Initial state](images/initialstate.png)
+Observation: The healthy tissue starts out as a neat, organized grid of rectangular cells. The pathogen is just a small spot on the left edge.
 
 #### 30 minutes
-![30 minutes](images/infection_30min.png)
-
-**Observation:**  
-[Describe what changed.]
+![30 minutes](images/30mins.png)
+Observation: The tissue deforms quickly. The cells lose their rigid shape and become swollen and round, causing the whole block of tissue to bulge outward.
 
 #### 60 minutes
-![60 minutes](images/infection_60min.png)
-
-**Observation:**  
-[Describe what changed.]
+![60 minutes](images/60mins.png)
+Observation: The deformation increases. The tissue reaches a new, stable state that looks almost the same as it did at 30 minutes.
 
 #### 90 minutes
-![90 minutes](images/infection_90min.png)
-
-**Observation:**  
-[Describe what changed.]
+![90 minutes](images/90mins.png)
+Observation: No big changes. The tissue stays in this degraded state.
 
 #### 120 minutes
-![120 minutes](images/infection_120min.png)
-
-**Observation:**  
-[Describe what changed.]
+![120 minutes](images/120mins.png)
+Observation: The simulation ends with the tissue  disorganized and swollen.
 
 ### 1.2 Overall Observations
 
-**Spread of the infected region:**  
-[Describe how the infection spreads over the two hours.]
+The infection starts at the small entry point on the left and spreads by releasing chemicals that attack and weaken the plant's cell walls. In the model, this spread works by lowering the stiffness parameter of the cell walls as the pathogen moves through the grid. 
+The tissue doesn't keep its neat shape like in a healthy plant, because there would be a perfect balance between the pressure pushing outward from inside the cell and the walls that hold everything in place. When the pathogen's chemicals break down that wall stiffness, the cells can’t resist the internal pressure anymore. Because the turgor pressure keeps pushing against walls that are now too weak to push back, the cells rapidly deform.  They swell into rounded, irregular shapes, making the whole outer edge of the tissue to bulge. This structural collapse goes through the entire grid in the first 30 minutes, leaving the tissue disorganized for the rest of the run. 
 
-**Tissue deformation:**  
-[Describe how the shape/structure of the tissue changes.]
-
----
 
 ## 2. Cell Wall Stiffness
 
@@ -113,27 +99,25 @@ The feedback does have limits. The walls can never become softer than a stiffnes
 
 Two simulations were performed using different values of `rel_cell_div_threshold`.
 
+default value: 2
+
 ### Run 1 – Lower Threshold
+![Lower threshold](images/lowerthrshld.png)
+Value: 1.2
 
-**Value:** `[value]`
-
-![Lower threshold](images/lower_threshold.png)
-
-**Observation:**  
-[Describe pathogen population expansion.]
+Observation:
+With a lower threshold, cells divide at a smaller size. This lets the pathogen multiply quickly, packing the tissue with tiny cells and spreading the infection fast.
 
 ### Run 2 – Higher Threshold
+![Higher threshold](images/higherthrshld.png)
+Value: 20
 
-**Value:** `[value]`
-
-![Higher threshold](images/higher_threshold.png)
-
-**Observation:**  
-[Describe pathogen population expansion.]
+Observation:
+A high threshold forces cells to grow big before they can divide. The pathogen gets stuck because it cannot multiply, and the original cells just swell up instead of splitting.
 
 ### Comparison
 
-[Explain how changing the threshold affected the speed of pathogen population growth.]
+The threshold controls exactly how big a cell must be to divide. A lower value speeds up the infection because the pathogen multiplies rapidly, and a high value stalls the spread by trapping the pathogen in a few swollen cells that cannot divide.
 
 ---
 
